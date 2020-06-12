@@ -62,7 +62,9 @@ end
 local function refuel()
     turtle.select(FUEL_SLOT)
     space = turtle.getItemSpace(FUEL_SLOT)
-    turtle.refuel(63 - space)
+    if space < 64 then
+        turtle.refuel(63 - space)
+    end
 end
 
 local function distanceToBase(xdistance, tunnel)
