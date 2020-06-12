@@ -101,7 +101,7 @@ local function returnToBaseAndReload(xdistance, tunnel, reverse, continue)
 
     if continue then
         print("Reloading")
-        while (turtle.getFuelLevel() - distanceToBase(xdistance, tunnel) <= 0) or (availableTorches() <= 1) do
+        while (turtle.getFuelLevel() == 0) or (availableTorches() == 0) or allSlotsUsed() do
             reload()
             refuel()
         end
