@@ -12,9 +12,9 @@ TUNNEL_NUMBER = 25
 TORCH_DISTANCE = 13
 
 local function mineForward()
-    torchFlag = false
+    local torchFlag = false
     if turtle.detect() then
-        block = turtle.inspect()
+        local block = turtle.inspect()
         if block["name"] == "Torch" then
             torchFlag = true
         end
