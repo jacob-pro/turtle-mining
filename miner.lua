@@ -29,7 +29,7 @@ end
 -- Leave 1 torch at all times
 local function availableTorches()
     space = turtle.getItemSpace(TORCH_SLOT)
-    return 63 - space
+    return 64 - space
 end
 
 -- Place behind so it doesn't get mined
@@ -101,7 +101,7 @@ local function returnToBaseAndReload(xdistance, tunnel, reverse, continue)
 
     if continue then
         print("Reloading")
-        while (turtle.getFuelLevel() == 0) or (availableTorches() == 0) or allSlotsUsed() do
+        while (turtle.getFuelLevel() == 0) or (availableTorches() <= 1) or allSlotsUsed() do
             reload()
             refuel()
         end
@@ -132,7 +132,7 @@ local function run()
     local torchTracker = 0
     while(1) do
 
-        if ((turtle.getFuelLevel() - distanceToBase(xdistance, tunnel)) <= 3) or (availableTorches() < 1) or allSlotsUsed() then
+        if ((turtle.getFuelLevel() - distanceToBase(xdistance, tunnel)) <= 3) or (availableTorches() <= 1) or allSlotsUsed() then
             returnToBaseAndReload(xdistance, tunnel, reverse, true)
         end
 
