@@ -15,7 +15,12 @@ local function mineForward()
     if turtle.detect() then
         turtle.dig()
     end
-    turtle.forward()
+    if turtle.forward() == false then
+        repeat
+            turtle.dig()
+            sleep(0.25)  -- small sleep to allow for gravel/sand to fall.
+        until turtle.forward() == true
+    end
     if turtle.detectUp() then
         turtle.digUp()
     end
