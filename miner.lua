@@ -12,7 +12,12 @@ TUNNEL_NUMBER = 25
 TORCH_DISTANCE = 13
 
 local function mineForward()
+    torchFlag = false
     if turtle.detect() then
+        block = turtle.inspect()
+        if block["name"] == "Torch" then
+            torchFlag = true
+        end
         turtle.dig()
     end
     if turtle.forward() == false then
@@ -21,9 +26,13 @@ local function mineForward()
             sleep(0.25)  -- small sleep to allow for gravel/sand to fall.
         until turtle.forward() == true
     end
+    if torchFlag then
+        placeTorch()
+    end
     if turtle.detectUp() then
         turtle.digUp()
     end
+
 end
 
 -- Leave 1 torch at all times
