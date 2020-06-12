@@ -11,6 +11,16 @@ TUNNEL_LENGTH = 80
 TUNNEL_NUMBER = 25
 TORCH_DISTANCE = 13
 
+-- Place behind so it doesn't get mined
+local function placeTorch()
+    turtle.turnLeft()
+    turtle.turnLeft()
+    turtle.select(TORCH_SLOT)
+    turtle.place()
+    turtle.turnRight()
+    turtle.turnRight()
+end
+
 local function mineForward()
     local torchFlag = false
     if turtle.detect() then
@@ -39,16 +49,6 @@ end
 local function availableTorches()
     space = turtle.getItemSpace(TORCH_SLOT)
     return 64 - space
-end
-
--- Place behind so it doesn't get mined
-local function placeTorch()
-    turtle.turnLeft()
-    turtle.turnLeft()
-    turtle.select(TORCH_SLOT)
-    turtle.place()
-    turtle.turnRight()
-    turtle.turnRight()
 end
 
 local function reload()
