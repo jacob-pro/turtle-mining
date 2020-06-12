@@ -14,8 +14,8 @@ TORCH_DISTANCE = 13
 local function mineForward()
     local torchFlag = false
     if turtle.detect() then
-        local block = turtle.inspect()
-        if block["name"] == "Torch" then
+        turtle.select(TORCH_SLOT)
+        if turtle.compare() then
             torchFlag = true
         end
         turtle.dig()
